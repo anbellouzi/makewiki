@@ -12,10 +12,15 @@ class PageList(ListView):
       3. Replace pass below with the code to render a template named `list.html`.
     """
     model = Page
+    template_name = 'wiki/list.html'
+
+
 
     def get(self, request):
         """ Returns a list of wiki pages. """
-        pass
+        wiki_pages_list = Page.objects.all()
+        context = {'wiki_pages_list': wiki_pages_list}
+        return render(request, 'wiki/list.html', context)
 
 
 class PageDetailView(DetailView):
@@ -36,10 +41,13 @@ class PageDetailView(DetailView):
            - Message Content: REPLACE_WITH_PAGE_TITLE has been successfully updated.
     """
     model = Page
+    template_name = "wiki/page.html"
 
     def get(self, request, slug):
         """ Returns a specific of wiki page by slug. """
-        pass
+        wiki = Page.objects.get(slug=slug)
+        context = {'wiki_pages_detail': wiki}
+        return render(request, 'wiki/page.html', context)
 
     def post(self, request, slug):
         pass

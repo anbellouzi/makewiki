@@ -1,0 +1,9 @@
+{% if wiki_pages_list %}
+    <ul>
+    {% for page in wiki_pages_list %}
+        <li><a href="/wiki/{{ page.slug }}/">{{ page.title }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No wiki pages are available.</p>
+{% endif %}

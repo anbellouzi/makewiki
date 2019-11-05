@@ -51,7 +51,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'makewiki.urls
+ROOT_URLCONF = 'makewiki.urls'
 
 
 TEMPLATES = [
