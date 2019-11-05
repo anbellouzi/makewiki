@@ -15,6 +15,7 @@ from . import views
 
 
 urlpatterns = [
+    path('home', views.IndexView.as_view(), name='wiki-index-page'),
     path('', views.PageList.as_view(), name='wiki-list-page'),
     path('<slug>/', views.PageDetailView.as_view(), name='wiki-details-page'),
     # path('REPLACE_ME_WITH_SLUG', REPLACE_ME_WITH_VIEW.as_view(), name='wiki-details-page'),

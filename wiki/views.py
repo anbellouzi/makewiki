@@ -3,6 +3,14 @@ from wiki.models import Page
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 
+class IndexView(ListView):
+    model = Page
+
+    def get(self, request):
+        wiki_pages_list = Page.objects.all()
+        context = {'wiki_pages_list': wiki_pages_list}
+        return render(request, "wiki/index.html", context)
+
 
 class PageList(ListView):
     """
@@ -26,8 +34,7 @@ class PageList(ListView):
 class PageDetailView(DetailView):
     """
     CHALLENGES:
-      1. On GET, render a template named `page.html`.
-      2. Replace this docstring with a description of what thos accomplishes.
+      renders the template page 'page.html' with the variable context
 
     STRETCH CHALLENGES:
       1. Import the PageForm class from forms.py.
@@ -47,6 +54,11 @@ class PageDetailView(DetailView):
         """ Returns a specific of wiki page by slug. """
         wiki = Page.objects.get(slug=slug)
         context = {'wiki_pages_detail': wiki}
+
+        # from forms import PageForm as form
+
+
+
         return render(request, 'wiki/page.html', context)
 
     def post(self, request, slug):

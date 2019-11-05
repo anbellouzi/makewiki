@@ -1,9 +1,20 @@
-{% if wiki_pages_list %}
+{% extends "base.html" %}
+
+
+{% block content %}
+
+  {% if wiki_pages_list %}
+    <h2> Wiki List </h2>
     <ul>
-    {% for page in wiki_pages_list %}
-        <li><a href="/wiki/{{ page.slug }}/">{{ page.title }}</a></li>
-    {% endfor %}
+      {% for page in wiki_pages_list %}
+      <li><a href="/wiki/{{ page.slug }}/" style="color:black">{{ page.title }}</a></li>
+      {% endfor %}
     </ul>
-{% else %}
+
+  {% else %}
+
     <p>No wiki pages are available.</p>
-{% endif %}
+
+  {% endif %}
+
+{% endblock %}
