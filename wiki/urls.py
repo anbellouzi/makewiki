@@ -13,6 +13,7 @@ from . import views
   """
 
 
+app_name = 'wiki'
 
 urlpatterns = [
     path('home', views.IndexView.as_view(), name='wiki-index-page'),

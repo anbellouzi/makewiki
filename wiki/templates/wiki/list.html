@@ -7,7 +7,7 @@
     <h2> Wiki List </h2>
     <ul>
       {% for page in wiki_pages_list %}
-      <li><a href="/wiki/{{ page.slug }}/" style="color:black">{{ page.title }}</a></li>
+      <li><a href="{% url 'wiki:wiki-details-page' page.slug %}" style="color:black">{{ page.title }}</a></li>
       {% endfor %}
     </ul>
 
