@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-  <h1>{{ wiki_pages_detail.title }}</h1>
+  <h1>{{ wiki_pages_detail.title|title }}</h1>
   <h2>Slug: {{ wiki_pages_detail.slug }}</h2>
   <label>By: {{ wiki_pages_detail.author }}</label>
   <p> {{ wiki_pages_detail.content }}</p>

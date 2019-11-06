@@ -55,7 +55,10 @@ class PageDetailView(DetailView):
         wiki = Page.objects.get(slug=slug)
         context = {'wiki_pages_detail': wiki}
 
-        # from forms import PageForm as form
+        from . import forms
+
+
+
 
 
 
