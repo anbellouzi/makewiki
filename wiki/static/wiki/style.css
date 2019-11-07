@@ -1,0 +1,14 @@
+.feature-background-img {
+  background-image: url("https://htmlcolorcodes.com/assets/images/html-color-codes-color-tutorials-hero-00e10b1f.jpg");
+  background-position: center;
+}
+
+.home_list  {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+.home_list li{
+  float: left
+}

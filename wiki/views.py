@@ -2,6 +2,7 @@ from django.shortcuts import render
 from wiki.models import Page
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
+from . import forms
 
 class IndexView(ListView):
     model = Page
@@ -55,7 +56,6 @@ class PageDetailView(DetailView):
         wiki = Page.objects.get(slug=slug)
         context = {'wiki_pages_detail': wiki}
 
-        from . import forms
 
 
 

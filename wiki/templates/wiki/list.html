@@ -4,17 +4,31 @@
 {% block content %}
 
   {% if wiki_pages_list %}
-    <h2> Wiki List </h2>
-    <ul>
-      {% for page in wiki_pages_list %}
-      <li><a href="{% url 'wiki:wiki-details-page' page.slug %}" style="color:black">{{ page.title|title }}</a></li>
-      {% endfor %}
-    </ul>
 
-  {% else %}
 
-    <p>No wiki pages are available.</p>
 
+  <div class="container m-5">
+    <div class="row mt-5">
+      <h2>Personal Wiki</h2>
+    </div>
+    <div class="row">
+      <ul class="home_list pb-5 pt-5">
+        {% for page in wiki_pages_list %}
+        <li class="pl-5">
+          <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">{{ page.title }}</h5>
+              <p class="card-subtitle mb-2 text-muted">{{ page.author }}</p>
+              <p class="card-text">{{ page.content }}</p>
+              <p class="pull-right text-muted">{{ page.created }}</p>
+              <a href="{% url 'wiki:wiki-details-page' page.slug %}" class="btn btn-primary">View More</a>
+            </div>
+          </div>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
   {% endif %}
 
 {% endblock %}
