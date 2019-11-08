@@ -1,9 +1,12 @@
 from django.shortcuts import render
+from django.http import HttpResponseRedirect
 from wiki.models import Page
+from django.urls import reverse
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from .forms import PageForm
 from django.core.mail import send_mail
+from django.utils import timezone
 
 
 class IndexView(ListView):
@@ -34,9 +37,6 @@ class PageList(ListView):
         return render(request, 'wiki/list.html', context)
 
 
-
-
-
 class PageDetailView(DetailView):
     """
     CHALLENGES:
@@ -56,14 +56,35 @@ class PageDetailView(DetailView):
     model = Page
     template_name = "wiki/page.html"
 
-    def get(self, request, slug):
-        """ Returns a specific of wiki page by slug. """
+    def get_wiki(self, slug):
         wiki = Page.objects.get(slug=slug)
         form = PageForm(instance=wiki)
         context = {'wiki_pages_detail': wiki,'form': form}
 
+        return context
+
+    def get(self, request, slug):
+        """ Returns a specific of wiki page by slug. """
+
+        context = self.get_wiki(slug)
 
         return render(request, 'wiki/page.html', context)
 
     def post(self, request, slug):
-        pass
+        wiki = Page.objects.get(slug=slug)
+        if request.method == "POST":
+            form = PageForm(request.POST)
+            if form.is_valid():
+                wiki.title  = request.POST.get('title', '')
+                wiki.slug = request.POST.get('slug', '')
+                wiki.content = request.POST.get('content', '')
+                wiki.modified = request.POST.get('modified', '')
+                wiki.save()
+                return HttpResponseRedirect(reverse('wiki:wiki-details-page', kwargs={'slug': wiki.slug}))
+        else:
+            form = PageForm(instance=wiki)
+
+
+        context = {'wiki_pages_detail': wiki,'form': form}
+
+        return render(request, 'wiki/page.html', context)

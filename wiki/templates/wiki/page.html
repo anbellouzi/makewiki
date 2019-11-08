@@ -24,9 +24,10 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="form-popup text-left my-auto" id="myForm">
-      <form action="/action_page.php" class="form-container">{% csrf_token %}
+      <form action="" class="form-container" method="post">{% csrf_token %}
         {{ form.as_p }}
         <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+        <button type="submit" class="btn" onclick="closeForm()">Save</button>
       </form>
     </div>
   </div>
@@ -34,17 +35,21 @@
 
 
 <script>
-function openForm() {
-  document.getElementById("myForm").style.display = "block";
-  document.getElementById("mybutton").style.display = "none";
-  document.getElementById("wiki-item").style.visibilty = "hidden";
-}
+  function openForm() {
+    document.getElementById("myForm").style.display = "block";
+    document.getElementById("mybutton").style.display = "none";
+    document.getElementById("wiki-item").style.visibilty = "hidden";
+    document.getElementById("wiki-item").style.visibilty = "hidden";
+    document.getElementById("wiki-item").style.opacity = "0.1";
 
-function closeForm() {
-  document.getElementById("myForm").style.display = "none";
-  document.getElementById("mybutton").style.display = "block";
-  document.getElementById("wiki-item").style.visibilty = "hidden";
-}
+  }
+
+  function closeForm() {
+    document.getElementById("myForm").style.display = "none";
+    document.getElementById("mybutton").style.display = "block";
+    document.getElementById("wiki-item").style.visibilty = "hidden";
+    document.getElementById("wiki-item").style.opacity = "1";
+  }
 </script>
 
 

@@ -34,7 +34,7 @@
   vertical-align: center;
   align-items: center;
   text-align: center;
-  top: 40px;
+  top: 5px;
   /* left: 20%; */
   border: 3px solid #f1f1f1;
   z-index: 9;
@@ -64,7 +64,7 @@
 }
 
 .form-container textarea {
-  max-height: 200px;
+  height: 120px;
 }
 .form-container select {
   max-width: 100px;
