@@ -38,21 +38,23 @@
   /* left: 20%; */
   border: 3px solid #f1f1f1;
   z-index: 9;
+  border-radius: 10px;
 
 }
 
 /* Add styles to the form container */
 .form-container {
   max-width: 100%;
-  padding: 10px;
+  padding: 15px;
   background-color: white;
+
 }
 
 /* Full-width input fields */
 .form-container input[type=text], .form-container input[type=password], .form-container textarea, .form-container select{
   width: 100%;
   padding: 15px;
-  margin: 5px 0 22px 0;
+  margin: 5px 0 0px 0;
   border: none;
   background: #f1f1f1;
 }
@@ -93,4 +95,13 @@
 
 .form-popup span {
   color: rgb(170, 170, 170);
+}
+.success {
+  color: green;
+}
+.errorlist li{
+  color: red;
+}
+.error {
+  color: red;
 }

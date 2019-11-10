@@ -10,7 +10,21 @@
       <span>Created on {{ wiki_pages_detail.created}} |   Modified on {{ wiki_pages_detail.modified}}</span>
     </div>
   </div>
+</div>
 
+<div class="container">
+  <div class="row">
+    <!-- Source Code: https://simpleisbetterthancomplex.com/tips/2016/09/06/django-tip-14-messages-framework.html -->
+    {% for message in messages %}
+      <div class="alert {{ message.tags }} alert-dismissible pl-0 ml-0" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        {{ message }}
+      </div>
+    {% endfor %}
+
+  </div>
 </div>
 
 
@@ -24,17 +38,18 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="form-popup text-left my-auto" id="myForm">
-      <form action="" class="form-container" method="post">{% csrf_token %}
+      <form action="" class="form-container" id="edit_form" method="post">{% csrf_token %}
         {{ form.as_p }}
         <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
-        <button type="submit" class="btn" onclick="closeForm()">Save</button>
+        <button type="submit" class="btn" onclick="">Save</button>
       </form>
     </div>
   </div>
 </div>
 
-
 <script>
+
+
   function openForm() {
     document.getElementById("myForm").style.display = "block";
     document.getElementById("mybutton").style.display = "none";
@@ -45,10 +60,11 @@
   }
 
   function closeForm() {
-    document.getElementById("myForm").style.display = "none";
-    document.getElementById("mybutton").style.display = "block";
-    document.getElementById("wiki-item").style.visibilty = "hidden";
-    document.getElementById("wiki-item").style.opacity = "1";
+
+      document.getElementById("myForm").style.display = "none";
+      document.getElementById("mybutton").style.display = "block";
+      document.getElementById("wiki-item").style.visibilty = "hidden";
+      document.getElementById("wiki-item").style.opacity = "1";
   }
 </script>
 

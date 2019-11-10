@@ -7,6 +7,8 @@ from django.views.generic.detail import DetailView
 from .forms import PageForm
 from django.core.mail import send_mail
 from django.utils import timezone
+from django.contrib import messages
+
 
 
 class IndexView(ListView):
@@ -80,7 +82,15 @@ class PageDetailView(DetailView):
                 wiki.content = request.POST.get('content', '')
                 wiki.modified = request.POST.get('modified', '')
                 wiki.save()
+
+                txt_message = wiki.title+" has been successfully updated"
+                messages.success(request, txt_message)
+
                 return HttpResponseRedirect(reverse('wiki:wiki-details-page', kwargs={'slug': wiki.slug}))
+            else:
+
+                errors = wiki.title+" Wiki was not updated"
+                messages.error(request, errors, extra_tags='alert')
         else:
             form = PageForm(instance=wiki)
 
