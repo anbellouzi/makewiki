@@ -19,7 +19,7 @@
               <h5 class="card-title">{{ page.title }}</h5>
               <p class="card-subtitle mb-2 text-muted">{{ page.author }}</p>
               <p class="card-text">{{ page.content }}</p>
-              <p class="pull-right text-muted">{{ page.created }}</p>
+              <p class="pull-right text-muted">{{ page.modified }}</p>
               <a href="{% url 'wiki:wiki-details-page' page.slug %}" class="btn btn-primary">View More</a>
             </div>
           </div>
