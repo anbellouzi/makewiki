@@ -22,4 +22,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # Wiki App
     path('wiki/', include('wiki.urls')),
+    # loggin page
+    path('accounts/', include('django.contrib.auth.urls')),
+
 ]

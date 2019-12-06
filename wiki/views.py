@@ -94,7 +94,13 @@ class PageDetailView(DetailView):
         else:
             form = PageForm(instance=wiki)
 
-
         context = {'wiki_pages_detail': wiki,'form': form}
 
         return render(request, 'wiki/page.html', context)
+
+
+# class IndexView(DetailView):
+#     model = Page
+#
+#     def get(self, request):
+#         return render(request, "wiki/index.html", context)
